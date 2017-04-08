@@ -1,0 +1,55 @@
+<html lang="en">
+<head>
+  <title>TEST</title>
+  <meta charset="utf-8">
+    {% load staticfiles %}
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+      ul {
+          list-style-type: none;
+      }
+      .errorlist{
+          color: red;
+      }
+      label[for=id_date_0]{
+        display: none;
+      }
+      label[for=id_time_0]{
+        display: none;
+      }
+
+  </style>
+</head>
+
+
+<body>
+  <!--Menu-->
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav navbar-center">
+          {% if user.is_authenticated %}
+            <li><a href='/'> USER: {{ user.get_username }} </a></li>
+            <li><a href="{% url 'logout'%}?next={{request.path}}">LOGOUT</a></li>
+            <li><a href="/addapp/">ADD APPOINTMENT</a></li>
+          {% else %}
+            <li><a href="{% url 'login'%}?next={{request.path}}">LOGIN</a></li>
+            <li><a href="/chooseapp/">CHOOSE APPOINTMENT</a></li>
+          {% endif %}
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+
+
+  {% block content %}
+  {% endblock %}
+
+  <!--Footer-->
+  <footer>
+  </footer>
+</body>

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1 style="margin:2%">HOME PAGE</h1>
+  {% if user.is_authenticated %}
+    <h3 style="margin-left:5%"> HELLO,  {{ user.get_username }} </h3>
+  {% endif %}
+
+{% endblock %}
